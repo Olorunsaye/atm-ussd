@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM transcation</title>
+</head>
+<!-- ATM transcation with while loop -->
+<style>
+  body {
+    background-image: url("./img/mariia-shalabaieva-3YD5JMytL8Y-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .welcome {
+    color: #fff;
+    padding-top: 20rem;
+    text-align: center;
+  }
+  button {
+    background-color: white;
+    color: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="welcome">
+  <h1 style="font-size: 3rem">welcome to UBA</h1>
+  <p style="font-size: 2rem">Thank you for banking with us</p>
+  <button onclick="atm()">click here to continue</button>
+</div>
+    <script>
+    //ATM transcation with while loop
+    function atm(){
+      let balance = 5000;
+      let user;
+while (true) {
+  alert ("Please Insert your Card");
+  user = prompt(`Please enter your name`);
+  if (user === null) {
+  alert('Please enter name and try again');
+   // Exit the loop if the user clicks cancel
+  }else{
+
+  let accountType = prompt(`Account selection
+1. Savings
+2. Current `);
+
+  if (accountType === "1" || accountType === "2") {
+    let secret = prompt(`Welcome ${user}! Please enter secret number`);
+    if (!isNaN(secret)) {
+      let choice;
+      while (true) {
+        choice = prompt(`Please select an option
+1. Check balance  4. buy data     
+2. Withdraw       5. transfer to UBA 
+3. Buy airtime    6. Transfer to other banks
+7. Exit`);
+
+        if (choice === null || choice === "7") {
+          alert("Thank you for using our services!");
+          break;
+        }
+        switch (choice) {
+          case "1":
+            alert(`Your balance is ${balance}`);
+            break;
+          case "2":
+          let withdraw = prompt(
+                "Enter amount to withdraw"
+              );
+              if (withdraw <= balance && !isNaN(secret) == true) {
+                alert(
+                  `Congratulations ${user}, Transaction success ${withdraw}`
+                );
+              } else {
+                alert("Insufficient Funds");
+              }
+              break;
+            case "3":
+              let amount = prompt("Please enter amount");
+              if (amount <= balance && !isNaN(amount) == true) {
+                let phoneNumber = prompt("Enter destination phone number");
+                if (!isNaN(phoneNumber) == true) {
+                  alert(
+                    `Congratulations ${user}, Your Recharge of ${amount} was successful`
+                  );
+                } else {
+                  alert("Please enter a valid phone number");
+                }
+              } else {
+                alert("Insufficient Funds");
+              }
+            case "4":
+              let data = prompt("Please enter amount");
+              if (data <= balance && +!isNaN(amount) == true) {
+                let dataNumber = prompt("Enter destination phone number");
+                if (!isNaN(dataNumber) == true) {
+                  alert(
+                    `congratulations ${user}, Data Recharge of ${data} was successful`
+                  );
+                } else {
+                  alert("Please enter valid phone number");
+                }
+              } else {
+                alert("Insufficient Funds");
+              }
+            case "5":
+            case "6":
+              let account = prompt("Please enter account number");
+              if (!isNaN(account)) {
+                let recepient = prompt("Enter Recepient name");
+                let transfer = prompt("Enter transfer amount");
+                if (transfer <= balance && !isNaN(transfer == true)) {
+                  alert(
+                    `Congratulations ${user}, you have successfully transfered ${transfer} to ${recepient}`
+                  );
+                } else {
+                  alert("Insuffiecient Funds");
+                }
+              } else {
+                alert(
+                  "Flease enter a valid account number and try again, Thank you!"
+                );
+              }
+          default:
+            alert("Please select valid option.");
+        }
+      }
+    } else {
+      alert("Invalid secret number");
+    }
+  } else {
+    alert("Invalid account type");
+  }
+}
+}
+}  
+   </script>  
+</body>
+</html>
